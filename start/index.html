@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluxxen – 30 Tage kostenlos testen</title>
+<meta name="description" content="Fluxxen 30 Tage kostenlos testen. Ohne Kreditkarte.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --bg:#f8fafc;
+  --surface:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+  --accent:#2563eb;
+  --accent-soft:#eff6ff;
+  --accent-hover:#1d4ed8;
+  --shadow:0 4px 24px rgba(15,23,42,0.08);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55;
+}
+.container{
+  width:min(1080px, calc(100% - 48px));
+  margin:0 auto;
+}
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter:blur(12px);
+  background:rgba(248,250,252,0.90);
+  border-bottom:1px solid var(--line);
+}
+.topbarInner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  min-height:72px;
+}
+.brand img{ height:72px; display:block; }
+.nav a{
+  text-decoration:none;
+  color:var(--muted);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:14px;
+  transition:background .15s;
+}
+.nav a:hover{ background:var(--accent-soft); color:var(--accent); }
+.hero{ padding:52px 0 28px; }
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--surface);
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:20px;
+}
+.kicker::before{
+  content:"";
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#22c55e;
+  display:inline-block;
+}
+.hero h1{
+  margin:0 0 12px;
+  font-size:clamp(32px,5vw,52px);
+  line-height:1.05;
+  letter-spacing:-1.2px;
+  font-weight:800;
+}
+.hero p{
+  margin:0;
+  color:var(--muted);
+  font-size:18px;
+  max-width:620px;
+}
+.layout{
+  display:grid;
+  grid-template-columns:1fr 0.9fr;
+  gap:20px;
+  padding:12px 0 64px;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:32px;
+  box-shadow:var(--shadow);
+}
+.card h2{
+  margin:0 0 24px;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:-0.3px;
+}
+.field{ margin-bottom:18px; }
+.label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:600;
+  font-size:14px;
+}
+.input{
+  width:100%;
+  min-height:50px;
+  border-radius:10px;
+  border:1.5px solid var(--line);
+  padding:0 16px;
+  font-size:15px;
+  background:#fff;
+  color:var(--text);
+  transition:border-color .15s;
+}
+.input:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(37,99,235,0.08);
+}
+.checkboxRow{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:18px 0 12px;
+  color:var(--muted);
+  font-size:14px;
+  cursor:pointer;
+}
+.checkboxRow input{
+  margin-top:3px;
+  flex-shrink:0;
+  accent-color:var(--accent);
+  width:16px; height:16px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  padding:0 24px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:15px;
+  border:none;
+  transition:all .15s;
+  cursor:pointer;
+}
+.btnPrimary{
+  background:var(--accent);
+  color:#fff;
+  width:100%;
+}
+.btnPrimary:hover:not(:disabled){ background:var(--accent-hover); }
+.btnPrimary:disabled{ opacity:0.55; cursor:not-allowed; }
+.btnSecondary{
+  background:var(--surface);
+  border:1.5px solid var(--line);
+  color:var(--text);
+  margin-top:12px;
+  width:100%;
+}
+.btnSecondary:hover{ background:var(--bg); }
+.errorBox{
+  display:none;
+  background:#fef2f2;
+  border:1px solid #fecaca;
+  border-radius:10px;
+  padding:12px 16px;
+  color:#dc2626;
+  font-size:14px;
+  margin-bottom:16px;
+}
+.successBox{
+  display:none;
+  background:#f0fdf4;
+  border:1px solid #86efac;
+  border-radius:10px;
+  padding:24px;
+  color:#166534;
+  font-size:15px;
+  text-align:center;
+}
+.successBox strong{ display:block; font-size:19px; margin-bottom:6px; }
+/* Info-Card */
+.infoCard{
+  background:var(--text);
+  color:#fff;
+  border:none;
+}
+.infoCard h2{ color:#fff; margin-bottom:20px; }
+.infoList{
+  list-style:none;
+  padding:0;
+  margin:0 0 24px;
+}
+.infoList li{
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  font-size:14px;
+  color:rgba(255,255,255,0.85);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.infoList li:last-child{ border-bottom:none; }
+.infoList li::before{
+  content:"✓";
+  color:#60a5fa;
+  font-weight:700;
+  flex-shrink:0;
+}
+.infoHint{
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:10px;
+  padding:16px;
+  font-size:13px;
+  color:rgba(255,255,255,0.65);
+}
+.footer{
+  border-top:1px solid var(--line);
+  padding:24px 0 36px;
+  color:var(--muted);
+  font-size:13px;
+}
+.footerRow{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.footerRow img{ height:22px; opacity:0.5; }
+@media(max-width:900px){ .layout{ grid-template-columns:1fr; } }
+@media(max-width:600px){
+  .topbarInner{ min-height:unset; padding:14px 0; flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbarInner">
+    <a class="brand" href="/"><img src="/fluxxen_logo.png" alt="Fluxxen"></a>
+    <nav class="nav">
+      <a href="/">← Zurück zum Shop</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">30 Tage kostenlos testen</div>
+    <h1>Starten Sie Ihre Testversion.</h1>
+    <p>Ohne Kreditkarte. Ohne Verpflichtung. Fluxxen 30 Tage im eigenen Betrieb ausprobieren.</p>
+  </div>
+</section>
+
+<section class="container layout">
+  <div class="card">
+    <h2>Testversion anlegen</h2>
+
+    <div id="errorBox" class="errorBox"></div>
+    <div id="successBox" class="successBox">
+      <strong>Registrierung erfolgreich!</strong>
+      Sie werden gleich zu Ihrem Fluxxen weitergeleitet…
+    </div>
+
+    <div id="formArea">
+      <div class="field">
+        <label class="label" for="firma">Firmenname</label>
+        <input class="input" id="firma" type="text" placeholder="z. B. Musterbau GmbH" autocomplete="organization">
+      </div>
+      <div class="field">
+        <label class="label" for="name">Ihr Name</label>
+        <input class="input" id="name" type="text" placeholder="Vor- und Nachname" autocomplete="name">
+      </div>
+      <div class="field">
+        <label class="label" for="email">E-Mail-Adresse</label>
+        <input class="input" id="email" type="email" placeholder="name@firma.de" autocomplete="email">
+      </div>
+      <div class="field">
+        <label class="label" for="telefon">Telefon <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+        <input class="input" id="telefon" type="text" placeholder="+49 ..." autocomplete="tel">
+      </div>
+      <div class="field">
+        <label class="label" for="passwort">Passwort</label>
+        <input class="input" id="passwort" type="password" placeholder="Mindestens 6 Zeichen" autocomplete="new-password">
+      </div>
+
+      <label class="checkboxRow">
+        <input type="checkbox" id="datenschutz">
+        <span>Ich stimme zu, dass meine Angaben zur Erstellung einer Fluxxen-Testversion verarbeitet werden.</span>
+      </label>
+
+      <button class="btn btnPrimary" type="button" id="submitBtn" onclick="doSignup()">
+        30 Tage kostenlos starten
+      </button>
+      <a class="btn btnSecondary" href="/">Zurück zum Shop</a>
+    </div>
+  </div>
+
+  <div class="card infoCard">
+    <h2>Was Sie erhalten</h2>
+    <ul class="infoList">
+      <li>30 Tage kostenlose Testphase</li>
+      <li>Keine Kreditkarte erforderlich</li>
+      <li>Sofortiger Zugang zu Ihrem Fluxxen</li>
+      <li>Projekte, Kalkulation, Zeiterfassung</li>
+      <li>KI-Assistent Anna inklusive</li>
+      <li>Mobile App für die Baustelle</li>
+      <li>Ihre Daten bleiben nach der Testphase erhalten</li>
+    </ul>
+    <div class="infoHint">
+      Nach Ablauf der Testphase wählen Sie einfach den passenden Plan für Ihren Betrieb — Fluxxen Start oder Fluxxen Pro.
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footerRow">
+    <img src="/fluxxen_logo.png" alt="Fluxxen">
+    <div>Testversion ohne Kreditkarte</div>
+  </div>
+</footer>
+
+<script>
+async function doSignup(){
+  const btn        = document.getElementById("submitBtn");
+  const errorBox   = document.getElementById("errorBox");
+  const successBox = document.getElementById("successBox");
+
+  const firmenname  = document.getElementById("firma").value.trim();
+  const name        = document.getElementById("name").value.trim();
+  const email       = document.getElementById("email").value.trim();
+  const telefon     = document.getElementById("telefon").value.trim();
+  const passwort    = document.getElementById("passwort").value;
+  const datenschutz = document.getElementById("datenschutz").checked;
+
+  errorBox.style.display = "none";
+
+  if(!firmenname)              return showError("Bitte Firmennamen eingeben.");
+  if(!name)                    return showError("Bitte Ihren Namen eingeben.");
+  if(!email)                   return showError("Bitte E-Mail-Adresse eingeben.");
+  if(!passwort||passwort.length<6) return showError("Passwort muss mindestens 6 Zeichen haben.");
+  if(!datenschutz)             return showError("Bitte stimmen Sie der Datenschutzerklärung zu.");
+
+  btn.disabled = true;
+  btn.textContent = "Wird angelegt…";
+
+  try{
+    const res  = await fetch("/api/shop/trial",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({firmenname,name,email,passwort,telefon})
+    });
+    const data = await res.json();
+
+    if(!res.ok){
+      showError(data.detail||"Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.");
+      btn.disabled = false;
+      btn.textContent = "30 Tage kostenlos starten";
+      return;
+    }
+
+    document.getElementById("formArea").style.display = "none";
+    successBox.style.display = "block";
+    setTimeout(()=>{ window.location.href = data.redirect||"https://app.fluxxen.de"; }, 2000);
+
+  }catch(e){
+    showError("Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung.");
+    btn.disabled = false;
+    btn.textContent = "30 Tage kostenlos starten";
+  }
+}
+
+function showError(msg){
+  const box = document.getElementById("errorBox");
+  box.textContent = msg;
+  box.style.display = "block";
+  box.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+document.addEventListener("keydown",e=>{ if(e.key==="Enter") doSignup(); });
+</script>
+</body>
+</html>
