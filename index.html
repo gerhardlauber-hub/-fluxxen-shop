@@ -44,10 +44,10 @@ body{
   align-items:center;
   justify-content:space-between;
   gap:20px;
-  min-height:72px;
+  min-height:108px;
 }
 .brand img{
-  height:72px;
+  height:108px;
   display:block;
 }
 .nav{
@@ -90,7 +90,7 @@ body{
 }
 .hero h1{
   margin:0 0 14px;
-  font-size:clamp(34px,5vw,58px);
+  font-size:clamp(24px,3.5vw,38px);
   line-height:1.05;
   letter-spacing:-1.5px;
   font-weight:800;
@@ -102,6 +102,132 @@ body{
   font-size:18px;
   max-width:680px;
 }
+/* ── Features ── */
+.features{
+  padding:0 0 64px;
+}
+.featuresIntro{
+  max-width:740px;
+  margin:0 0 48px;
+}
+.featuresIntro p{
+  font-size:17px;
+  color:var(--muted);
+  margin:0;
+  line-height:1.7;
+}
+.annaBlock{
+  background:var(--text);
+  color:#fff;
+  border-radius:var(--radius);
+  padding:36px 40px;
+  margin-bottom:32px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:32px;
+  align-items:center;
+}
+.annaBlock h2{
+  color:#fff;
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:-0.5px;
+  margin:0 0 14px;
+}
+.annaBlock p{
+  color:rgba(255,255,255,0.75);
+  font-size:15px;
+  line-height:1.7;
+  margin:0 0 20px;
+}
+.annaTag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(96,165,250,0.15);
+  border:1px solid rgba(96,165,250,0.3);
+  color:#93c5fd;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+}
+.annaTagIcon{ font-size:16px; }
+.annaRight{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.annaFeature{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  padding:14px 16px;
+  font-size:14px;
+  color:rgba(255,255,255,0.85);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.annaFeature::before{
+  content:"✓";
+  color:#60a5fa;
+  font-weight:700;
+  flex-shrink:0;
+}
+.featureGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:32px;
+}
+.featureItem{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 2px 8px rgba(15,23,42,0.04);
+}
+.featureItemIcon{
+  font-size:22px;
+  margin-bottom:10px;
+}
+.featureItemTitle{
+  font-weight:700;
+  font-size:14px;
+  margin-bottom:6px;
+}
+.featureItemText{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+.noSnackBar{
+  background:var(--accent-soft);
+  border:1px solid rgba(37,99,235,0.15);
+  border-radius:12px;
+  padding:20px 24px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  font-size:15px;
+  color:var(--text);
+}
+.noSnackBar strong{ color:var(--accent); }
+.dividerLine{
+  border:none;
+  border-top:1px solid var(--line);
+  margin:0 0 48px;
+}
+@media(max-width:900px){
+  .annaBlock{ grid-template-columns:1fr; }
+  .featureGrid{ grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:600px){
+  .featureGrid{ grid-template-columns:1fr; }
+  .annaBlock{ padding:24px; }
+}
+/* ── Konfigurator ── */
 .layout{
   display:grid;
   grid-template-columns:1.15fr 0.85fr;
@@ -319,10 +445,87 @@ select:focus{
 
 <section class="hero">
   <div class="container">
-    <div class="kicker">Vom Handwerker für Handwerker</div>
-    <h1>Das ERP für<br><span>Ihren Betrieb.</span></h1>
-    <p>Wählen Sie Version, Mitarbeiterzahl und Laufzeit. Der Preis wird direkt berechnet.</p>
+    <h1>Das ERP für <span>Ihren Betrieb.</span></h1>
+    <p>Modernes ERP für Handwerksbetriebe – mit KI-Assistenz, Sprachsteuerung und allem, was ein Betrieb wirklich braucht.</p>
   </div>
+</section>
+
+<section class="features container">
+
+  <div class="featuresIntro">
+    <p>
+      Die meisten Softwarelösungen kommen aus der Industrie oder dem Büro – und man merkt es.
+      Fluxxen wurde von Grund auf für Handwerksbetriebe gebaut. Alles dreht sich um das Projekt:
+      Angebot, Arbeitsauftrag, Abrechnung, Nachträge, Dokumente, Zeiterfassung – alles hängt
+      am gleichen Projekt, immer nachvollziehbar, immer vollständig.
+    </p>
+  </div>
+
+  <div class="annaBlock">
+    <div>
+      <h2>Anna – Ihre KI-Assistentin</h2>
+      <p>
+        Anna ist keine Chatbox. Anna kennt Ihren Betrieb. Sie öffnet Projekte per Sprachbefehl,
+        erstellt Angebote, analysiert Bauzeitverzögerungen und liest Pläne aus PDFs.
+        Fluxxen kann vollständig sprachgesteuert bedient werden – auch mit schmutzigen Händen
+        direkt auf der Baustelle.
+      </p>
+      <div class="annaTag">
+        <span class="annaTagIcon">🎙️</span>
+        Vollständig sprachgesteuert
+      </div>
+    </div>
+    <div class="annaRight">
+      <div class="annaFeature">Projekte per Sprache öffnen und steuern</div>
+      <div class="annaFeature">Angebote und Dokumente automatisch erstellen</div>
+      <div class="annaFeature">CAD-Zeichnungen und PDFs analysieren</div>
+      <div class="annaFeature">Bauzeitverzögerungen und Verträge auswerten</div>
+      <div class="annaFeature">Statusberichte und Stellungnahmen generieren</div>
+    </div>
+  </div>
+
+  <div class="featureGrid">
+    <div class="featureItem">
+      <div class="featureItemIcon">📋</div>
+      <div class="featureItemTitle">Auftragsdokumente</div>
+      <div class="featureItemText">Angebote, Arbeitsaufträge, Abrechnungsblätter und Nachträge in einem Modul. GAEB-Import inklusive.</div>
+    </div>
+    <div class="featureItem">
+      <div class="featureItemIcon">⏱️</div>
+      <div class="featureItemTitle">Zeiterfassung</div>
+      <div class="featureItemText">Mitarbeiter erfassen Zeiten mobil direkt vom Telefon – ohne App-Store, als PWA.</div>
+    </div>
+    <div class="featureItem">
+      <div class="featureItemIcon">📄</div>
+      <div class="featureItemTitle">Dokumente & OCR</div>
+      <div class="featureItemText">PDFs werden automatisch per OCR erkannt und dem richtigen Projekt zugeordnet.</div>
+    </div>
+    <div class="featureItem">
+      <div class="featureItemIcon">⚡</div>
+      <div class="featureItemTitle">E-Rechnung</div>
+      <div class="featureItemText">ZUGFeRD-konforme Ausgangsrechnungen auf Knopfdruck – gesetzeskonform ab 2025.</div>
+    </div>
+    <div class="featureItem">
+      <div class="featureItemIcon">📬</div>
+      <div class="featureItemTitle">Kommunikation</div>
+      <div class="featureItemText">Mail-Eingang wird automatisch analysiert und dem richtigen Projekt zugeordnet.</div>
+    </div>
+    <div class="featureItem">
+      <div class="featureItemIcon">📱</div>
+      <div class="featureItemTitle">Mobile App</div>
+      <div class="featureItemText">Läuft auf jedem Smartphone als PWA. Kein App-Store, kein Update-Zwang.</div>
+    </div>
+  </div>
+
+  <div class="noSnackBar">
+    <span style="font-size:22px">🔧</span>
+    <div><strong>Kein Schnickschnack. Keine Lernkurve.</strong> Fluxxen sieht so aus wie es funktioniert: klar, ruhig, selbsterklärend. Ein Schreiner, Elektriker oder Maler ist in 30 Minuten produktiv.</div>
+  </div>
+
+  <hr class="dividerLine" style="margin-top:48px">
+  <h2 style="font-size:22px;font-weight:800;letter-spacing:-0.3px;margin:0 0 8px">Preis konfigurieren</h2>
+  <p style="color:var(--muted);font-size:15px;margin:0 0 24px">Wählen Sie Version, Mitarbeiterzahl und Laufzeit. Der Preis wird direkt berechnet.</p>
+
 </section>
 
 <section class="container layout" id="konfigurator">
